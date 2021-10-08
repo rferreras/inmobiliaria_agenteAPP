@@ -1,0 +1,7 @@
+{
+  "name": "AgenteAPP",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
