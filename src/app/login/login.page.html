@@ -1,9 +1,34 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content fullscreen>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="ion-justify-content-center ion-align-self-center">
+        
+        <ion-card>   
+          <img src="assets/images/logo.jpeg" />       
+          <ion-card-content>
+            
+            <ion-item>
+              <ion-label position="stacked">Correo electrónico</ion-label>
+              <ion-input type="email" [(ngModel)]="credentials.email"></ion-input>
+            </ion-item>
 
-<ion-content>
+            <ion-item>
+              <ion-label position="stacked">Contraseña</ion-label>
+              <ion-input type="password" [(ngModel)]="credentials.contrasena"></ion-input>
+            </ion-item>
 
+            <ion-button (click)="login()" class="ion-margin-top" expand="block" color="primary">Entrar</ion-button>
+
+            <div class="ion-margin-top ion-text-center">
+              <p>He olvidado mi contraseña</p>              
+            </div>
+
+          </ion-card-content>
+        </ion-card>
+
+        <p class="ion-text-center">No tengo cuenta, quiero registrarme</p>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

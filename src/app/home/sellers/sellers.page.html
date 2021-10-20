@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="'Atras'">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Vendedores</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>             
+          <ion-card-content>
+              <p>Area de Filtros</p>           
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <div *ngIf="loading">
+            <ion-item *ngFor="let row of [1,2,3,4,5,6]">
+              <ion-label class="ion-text-wrap">
+                <ion-text color="primary">
+                  <h3><ion-skeleton-text animated style="width: 40%"></ion-skeleton-text></h3>
+                </ion-text>                     
+                <p><ion-skeleton-text animated style="width: 80%"></ion-skeleton-text></p>
+              </ion-label>            
+            </ion-item>
+          </div>
+
+          <div *ngIf="!loading">
+            <ion-item *ngFor="let seller of sellers" detail (click)="goToSeller(seller.id)">
+              <ion-label class="ion-text-wrap">
+                <ion-text color="primary">
+                  <h3>{{ seller.nombre}} {{ seller.apellidos }}</h3>
+                </ion-text>                     
+                <p>Registro: {{ seller.fecha_alta }}</p>
+              </ion-label>
+              <ion-badge slot="end">{{ seller.propiedades }}</ion-badge>
+            </ion-item>
+          </div>
+
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

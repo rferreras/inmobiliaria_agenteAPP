@@ -1,20 +1,25 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content> 
+  <img src="assets/images/banner-top.png"> 
+  <ion-grid>    
+    <ion-row>
+      <ion-col size="6">
+        <app-btn-menu [title]="'Vendedores'" [icon]="'address-card'" [routerLink]="['sellers']" ></app-btn-menu>
+      </ion-col>
+      <ion-col size="6">
+        <app-btn-menu [title]="'Compradores'" [icon]="'users'" [routerLink]="['buyers']"></app-btn-menu>
+      </ion-col>
+      <ion-col size="6">
+        <app-btn-menu [title]="'Propiedades'" [icon]="'home'" [routerLink]="['properties']"></app-btn-menu>
+      </ion-col>
+      <ion-col size="6">
+        <app-btn-menu [title]="'Oportunidades'" [icon]="'bullseye'" [routerLink]="['opportunities']"></app-btn-menu>
+      </ion-col>
+      <ion-col size="6">
+        <app-btn-menu [title]="'Mi Cuenta'" [icon]="'info-circle'" [routerLink]="['my-info']"></app-btn-menu>
+      </ion-col>
+      <ion-col size="6">
+        <app-btn-menu [title]="'Salir'" [icon]="'sign-out-alt'"></app-btn-menu>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

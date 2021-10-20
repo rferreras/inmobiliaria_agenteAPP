@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="'Atras'">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ property.calle }} {{ property.numero_exterior }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="info">
+        <ion-icon name="information-circle"></ion-icon>
+        <ion-label>Info</ion-label>        
+      </ion-tab-button>
+  
+      <ion-tab-button tab="images">
+        <ion-icon name="person-circle"></ion-icon>
+        <ion-label>Imagenes</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="docs">
+        <ion-icon name="document-text-outline"></ion-icon>        
+        <ion-label>Documentos</ion-label>
+      </ion-tab-button>
+  
+      <ion-tab-button tab="comments">
+        <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+        <ion-label>Seguimiento</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+</ion-content>
