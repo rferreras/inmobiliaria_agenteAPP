@@ -1,0 +1,100 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{propertyId == '0' ? 'Nueva propiedad' : 'Editar propiedad'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="frmPropiedad">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="5">
+          <ion-item>
+            <ion-label position="stacked">Operación <span class="required">(*)</span></ion-label>
+            <ion-select placeholder="Tipo Operación" formControlName="tipo_negocio">
+              <ion-select-option *ngFor="let tipo of tipoOperacion" [value]="tipo.id">{{tipo.tipo}}</ion-select-option>            
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col size="7">
+          <ion-item>
+            <ion-label position="stacked">Tipo de propiedad <span class="required">(*)</span></ion-label>
+            <ion-select placeholder="Tipo Propiedad" formControlName="tipo_construccion">
+              <ion-select-option *ngFor="let tipo of propertiesTypes" [value]="tipo.id">{{tipo.tipo}}</ion-select-option>            
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+  
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="stacked">Calle <span class="required">(*)</span></ion-label>
+            <ion-input formControlName="calle"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="stacked">Nº Ext. <span class="required">(*)</span></ion-label>
+            <ion-input formControlName="numero_exterior"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="stacked">Nº Int.</ion-label>
+            <ion-input formControlName="numero_interior"></ion-input>
+          </ion-item>
+        </ion-col>      
+      </ion-row>
+      <ion-row>
+        <ion-col size="8">
+          <ion-item>
+            <ion-label position="stacked">Colonia</ion-label>
+            <ion-input formControlName="colonia"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="4">
+          <ion-item>
+            <ion-label position="stacked">C.P</ion-label>
+            <ion-input formControlName="cp"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="stacked">Ciudad <span class="required">(*)</span></ion-label>
+            <ion-input formControlName="ciudad"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="6">
+          <ion-item>
+            <ion-label position="stacked">Estado <span class="required">(*)</span></ion-label>
+            <ion-select placeholder="Estado" formControlName="estado">
+              <ion-select-option *ngFor="let estado of estados" [value]="estado.id">{{estado.estado}}</ion-select-option>            
+            </ion-select>
+          </ion-item>
+        </ion-col>      
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="stacked">Descripción de la propiedad</ion-label>
+            <ion-textarea rows="6" placeholder="Introduzca una descripción de la propiedad aqui ..." formControlName="descripcion"></ion-textarea>            
+          </ion-item>
+        </ion-col>
+      </ion-row>         
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" fill="outline" (click)="guardar()">
+            <ion-icon slot="start" name="save-outline"></ion-icon>
+            Guardar propiedad
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+
+</ion-content>

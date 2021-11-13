@@ -31,4 +31,8 @@ export class SellersPage implements OnInit {
   goToSeller = (sellerId) => {
     this.router.navigate(['info', sellerId], { relativeTo: this.activatedRoute})
   }
+
+  addSeller = () => {
+    this.router.navigate(['edit', 0], { relativeTo: this.activatedRoute})
+  }
 }

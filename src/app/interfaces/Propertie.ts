@@ -14,3 +14,18 @@ export interface Propertie{
 export interface Images{
     url: string
 }
+
+export interface PropertyType{
+    id: number
+    tipo: string
+}
+
+export interface Estados{
+    id: number
+    estado: string
+}
+
+export interface TipoOperacion{
+    id: number
+    tipo: string
+}

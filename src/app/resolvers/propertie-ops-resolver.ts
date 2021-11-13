@@ -2,19 +2,19 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { SellersService } from '../services/sellers.service';
+import { PropertiesService } from '../services/properties.service';
  
 @Injectable({
   providedIn: 'root'
 })
 
-export class SellerResolverService implements Resolve<any> {
+export class PropertyOpsResolverService implements Resolve<any> {
   constructor(
-      private _sellerService: SellersService
+      private _propertiesService: PropertiesService
   ) {}
 
-  resolve(route: ActivatedRouteSnapshot): Observable<any> {        
-    return this._sellerService.getSeller(route.params.id).pipe(
+  resolve(route: ActivatedRouteSnapshot): Observable<any> {      
+    return this._propertiesService.getTiposOperacion().pipe(
       catchError(error => {
         return of('No data');
       })
