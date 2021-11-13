@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SellersService } from '../../services/sellers.service';
 import { Seller } from '../../interfaces/Sellers';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-sellers',
@@ -15,7 +16,8 @@ export class SellersPage implements OnInit {
   constructor(
     private _sellersService: SellersService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private _sharedService: SharedService
   ) { }
 
   ngOnInit() {
@@ -23,12 +25,15 @@ export class SellersPage implements OnInit {
   }
 
   getSellers = async() => {
+    const loading = await this._sharedService.presentLoading()
     const sellers: any = await this._sellersService.getSellers({})
     this.sellers = sellers.data
     this.loading = false
+    loading.dismiss()
   }
 
   goToSeller = (sellerId) => {
+    console.log(sellerId)
     this.router.navigate(['info', sellerId], { relativeTo: this.activatedRoute})
   }
 

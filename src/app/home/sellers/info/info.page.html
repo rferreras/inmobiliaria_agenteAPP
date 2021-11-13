@@ -52,7 +52,7 @@
     <ion-list>
       <ion-item *ngFor="let propiedad of propiedades; let i = index" button (click)="viewProperty(i)">
         <ion-thumbnail slot="start">
-          <img [src]="propiedad.imagenes ? propiedad.imagenes[0].url : ''">
+          <img [src]="propiedad.imagenes.length ? propiedad.imagenes[0].url : upload+'nophoto.png'">
         </ion-thumbnail>
         <ion-label>
           <ion-text>

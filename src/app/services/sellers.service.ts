@@ -17,6 +17,6 @@ export class SellersService {
     })
   } 
 
-  getSeller = (sellerId: number) => this.http.get(`${environment.api}/sellers/getSeller/${sellerId}`)
+  getSeller = (sellerId: string) => this.http.get(`${environment.api}/sellers/getSeller/${sellerId}`)
 
 }

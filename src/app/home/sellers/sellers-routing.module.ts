@@ -6,6 +6,7 @@ import { SellerResolverService } from '../../resolvers/seller-resolver';
 import { StateResolverService } from '../../resolvers/states-resolver';
 import { PropertyOpsResolverService } from '../../resolvers/propertie-ops-resolver';
 import { PropertyTypeResolverService } from '../../resolvers/propertie-type-resolver';
+import { PropertieResolverService } from 'src/app/resolvers/propertie-resolver';
 
 const routes: Routes = [
   {
@@ -27,7 +28,8 @@ const routes: Routes = [
     resolve: { 
       states: StateResolverService,
       operation_types: PropertyOpsResolverService,
-      types: PropertyTypeResolverService 
+      types: PropertyTypeResolverService,
+      propertie: PropertieResolverService
     }
   }
 ];

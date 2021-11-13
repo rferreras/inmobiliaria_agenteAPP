@@ -2,17 +2,19 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Injectable } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { Observable, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError, finalize } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
+    private countRequest = 0;
+    private loading: any
     constructor(
         private _authService: AuthService,
         private router: Router
     ) { }
 
-    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {                
         if (this._authService.user) {
             request = request.clone({
               setHeaders: {
@@ -34,8 +36,15 @@ export class AuthInterceptor implements HttpInterceptor {
         request = request.clone({
             headers: request.headers.set('Accept', 'application/json')        
         });
-        
+                
         return next.handle(request).pipe(
+            finalize(() => {                
+                this.countRequest--
+                if (!this.countRequest) {
+                    console.log('aca')
+                    this.loading.dismiss()                    
+                }
+            }),
             map((event: HttpEvent<any>) => {
                 if (event instanceof HttpResponse) {
                 // console.log('event--->>>', JSON.stringify(event));
@@ -53,7 +62,5 @@ export class AuthInterceptor implements HttpInterceptor {
                 }
                 return throwError(error);
         }));
-
-        
     }
 }

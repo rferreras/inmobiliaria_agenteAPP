@@ -1,5 +1,9 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="'Atras'">
+      </ion-back-button>
+    </ion-buttons>
     <ion-title>{{propertyId == '0' ? 'Nueva propiedad' : 'Editar propiedad'}}</ion-title>
   </ion-toolbar>
 </ion-header>

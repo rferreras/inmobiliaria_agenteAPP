@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PropertiesService } from '../../../services/properties.service';
-import { PropertyType, Estados, TipoOperacion } from '../../../interfaces/Propertie';
+import { PropertyType, Estados, TipoOperacion, Propertie } from '../../../interfaces/Propertie';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SharedService } from '../../../services/shared.service';
 
@@ -17,16 +17,17 @@ export class PropertyPage implements OnInit {
   public estados: Estados[] = []
   public tipoOperacion: TipoOperacion[] = []
   public frmPropiedad: FormGroup
+  private property: Propertie
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private _propService: PropertiesService,
     private formbuilder: FormBuilder,
     private _sharedService: SharedService
   ) { 
     this.sellerId = this.route.snapshot.params.sellerId
-    this.propertyId = this.route.snapshot.params.id
-    this.createForm()
+    this.propertyId = this.route.snapshot.params.id    
   }
 
   ngOnInit() {
@@ -34,23 +35,27 @@ export class PropertyPage implements OnInit {
       this.estados = response.states
       this.propertiesTypes = response.types
       this.tipoOperacion = response.operation_types
+      this.property = response.propertie.data
+      
+      console.log(this.property)
+      this.createForm()
     });
   }
 
   createForm = () => {
     this.frmPropiedad = this.formbuilder.group({
-      id : [0],
+      id : [this.property?.id],
       vendedor_id: [this.sellerId],
-      calle : ['', Validators.required],
-      numero_exterior : ['', Validators.required],
-      numero_interior : [''],
-      colonia : [''],
-      ciudad : ['', Validators.required],
-      estado : ['18', Validators.required],
-      cp : [''],
-      tipo_negocio : ['', Validators.required],
-      tipo_construccion : ['', Validators.required],
-      descripcion: [''],
+      calle : [this.property?.calle, Validators.required],
+      numero_exterior : [this.property?.numero_exterior, Validators.required],
+      numero_interior : [this.property?.numero_interior],
+      colonia : [this.property?.colonia],
+      ciudad : [this.property?.ciudad, Validators.required],
+      estado : [this.property?.estado || '18', Validators.required],
+      cp : [this.property?.cp],
+      tipo_negocio : [this.property?.tipo_negocio, Validators.required],
+      tipo_construccion : [this.property?.tipo_construccion, Validators.required],
+      descripcion: [this.property?.descripcion],
     })
   }
 
@@ -61,8 +66,13 @@ export class PropertyPage implements OnInit {
   guardar = async() => {
     if(!this.frmPropiedad.valid) return this._sharedService.alert_simple('Falta información', 'Es necesario que proporcione la información mínima de la propiedad')
     
-    const resp = await this._propService.guardarPropiedad(this.frmPropiedad.value)
-    console.log(resp)
+    const resp: any = await this._propService.guardarPropiedad(this.frmPropiedad.value)
+    this._sharedService.alert_simple(resp.header, resp.message)
+    
+    if(resp.error) return
+    this.propertyId = resp.property_id
+    this.frmPropiedad.patchValue({id: resp.property_id})
+    
   }
 
 }

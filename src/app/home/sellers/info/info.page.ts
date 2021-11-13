@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Seller } from '../../../interfaces/Sellers';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-info',
@@ -8,7 +9,7 @@ import { Seller } from '../../../interfaces/Sellers';
   styleUrls: ['./info.page.scss'],
 })
 export class InfoPage implements OnInit {
-
+  public upload = `${environment.api}/uploads/`
   public seller: Seller
   public propiedades = []
 
@@ -18,7 +19,7 @@ export class InfoPage implements OnInit {
   ) { 
     this.activatedRoute.data.subscribe((response: any) => {      
       this.seller = response.seller.data.generales  
-      this.propiedades = response.seller.data.propiedades      
+      this.propiedades = response.seller.data.propiedades
     });
   }
 

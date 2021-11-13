@@ -9,6 +9,9 @@ export interface Propertie{
     imagenes: string
     numero_exterior: string
     numero_interior: string
+    tipo_negocio: string
+    tipo_construccion: string
+    descripcion: string
 }
 
 export interface Images{
