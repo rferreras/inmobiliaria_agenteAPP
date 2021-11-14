@@ -12,6 +12,10 @@ export interface Propertie{
     tipo_negocio: string
     tipo_construccion: string
     descripcion: string
+    tipo_propiedad: string
+    operacion: string
+    valor: number
+    fecha_reg: string
 }
 
 export interface Images{

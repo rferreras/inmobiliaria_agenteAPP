@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Propertie } from '../../../interfaces/Propertie';
+import { PropertiesService } from '../../../services/properties.service';
 
 @Component({
   selector: 'app-detail',
@@ -8,19 +9,17 @@ import { Propertie } from '../../../interfaces/Propertie';
   styleUrls: ['./detail.page.scss'],
 })
 export class DetailPage implements OnInit {
-
-  public property: Propertie
-
   constructor(
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    public _propService: PropertiesService
   ) { 
-    this.activatedRoute.data.subscribe((response: any) => {      
-      this.property = response.propertie.data      
+    this.activatedRoute.data.subscribe((response: any) => {            
+      this._propService.property = response.propertie.data 
     });
   }
 
   ngOnInit() {
-    console.log(this.property)
+    
   }
 
 }

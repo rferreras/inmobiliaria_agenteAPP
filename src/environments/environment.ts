@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //api: 'https://inmobiliaria.monkeysoft.com.mx'
-  api: 'http://localhost'
+  api: 'https://inmobiliaria.monkeysoft.com.mx'
+  //api: 'http://localhost'
 };
 
 /*

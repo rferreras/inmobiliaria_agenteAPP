@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { environment } from 'src/environments/environment';
+import { Propertie } from '../../../../interfaces/Propertie';
+import { PropertiesService } from '../../../../services/properties.service';
 
 @Component({
   selector: 'app-info',
@@ -6,8 +10,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./info.page.scss'],
 })
 export class InfoPage implements OnInit {
+  public upload = `${environment.api}/uploads/`
 
-  constructor() { }
+  constructor(
+    private _propService: PropertiesService
+  ) { 
+    
+  }
 
   ngOnInit() {
   }

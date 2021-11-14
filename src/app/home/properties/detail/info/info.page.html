@@ -1,3 +1,40 @@
 <ion-content CLASS="ion-padding">
-  <h1>INFORMACION GENERAL DE LA PROPIEDAD</h1>
+  
+  <ion-card>
+    <img [src]="_propService.property.imagenes.length ? _propService.property.imagenes[0].url : upload+'nophoto.png'">
+    <ion-card-header>
+      <ion-card-title>{{ _propService.property.calle }} {{ _propService.property.numero_exterior }}</ion-card-title>
+      <ion-card-subtitle>{{ _propService.property.colonia }}, {{ _propService.property.ciudad }} {{ _propService.property.estado }} {{ _propService.property.cp }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>            
+      <ion-list >
+        <ion-item class="ion-no-padding">
+          <ion-label>Valor</ion-label>
+          <ion-note slot="end">{{_propService.property.valor | currency}}</ion-note>
+        </ion-item>
+
+        <ion-item class="ion-no-padding">
+          <ion-label>Tipo</ion-label>
+          <ion-note slot="end">{{_propService.property.operacion}}</ion-note>
+        </ion-item>
+      
+        <ion-item class="ion-no-padding">
+          <ion-label>Clase</ion-label>
+          <ion-note slot="end">{{_propService.property.tipo_propiedad}}</ion-note>          
+        </ion-item>
+
+        <ion-item class="ion-no-padding">
+          <ion-label>Fecha Reg</ion-label>
+          <ion-note slot="end">{{_propService.property.fecha_reg}}</ion-note>          
+        </ion-item>
+      </ion-list>
+
+      <div class="ion-margin-top">
+        <h3>Descripción de la propiedad</h3>
+        {{ _propService.property.descripcion }}
+      </div>
+
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>

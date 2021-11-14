@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
-import { Estados, TipoOperacion } from '../interfaces/Propertie';
+import { Estados, TipoOperacion, Propertie } from '../interfaces/Propertie';
 import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PropertiesService {
+  public property: Propertie
 
   constructor(
     private http: HttpClient
