@@ -19,10 +19,22 @@ export class ImagesPage implements OnInit {
   ngOnInit() {
   }
 
-  addImage = () => {
-    const image = this._shareService.takePicture()
+  addImage = async() => {
+    const image = await this._shareService.takePicture()
+    const data = {
+      property_id: this._propService.property.id,
+      image: image
+    }
+    
+    const loading: any = await this._shareService.presentLoading()
+    const resp: any = await this._propService.uploadImage(data)    
+    if(resp.error) return this._shareService.alert_simple(resp.header, resp.message) 
 
-    console.log(image)
+    this._propService.getProperties(parseInt(this._propService.property.id)).subscribe( (res:any) => {
+      this._propService.property = res.data
+      console.log(res)
+      loading.dismiss()
+    })
   }
 
 }

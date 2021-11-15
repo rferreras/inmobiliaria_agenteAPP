@@ -26,4 +26,12 @@ export class PropertiesService {
       .subscribe(resolve, reject)
     })
   }
+  uploadImage = (data: any) => {
+    return new Promise((resolve, reject) => {
+      this.http.post(`${environment.api}/properties/uploadImage`, data)
+      .pipe(map((resp: any) => resp))
+      .subscribe(resolve, reject)
+    })
+  }
+  
 }
