@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AuthGuard } from './guards/auth.guard';
-import { Camera } from '@ionic-native/camera/ngx';
+
 const routes: Routes = [  
   {
     path: '',
@@ -25,9 +25,6 @@ const routes: Routes = [
     RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
     FontAwesomeModule
   ],
-  exports: [RouterModule],
-  providers: [
-    Camera
-  ]
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

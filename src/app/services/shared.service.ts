@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AlertController, LoadingController, Platform } from '@ionic/angular';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { VideoCapturePlus, VideoCapturePlusOptions, MediaFile } from '@ionic-native/video-capture-plus/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class SharedService {
     private alertController: AlertController,
     private loadingController: LoadingController,
     private camera: Camera,
-    private platform: Platform
+    private platform: Platform,
+    private videoCapturePlus: VideoCapturePlus
   ) { }
 
   alert_simple = async(header: string, message: string) => {
@@ -48,4 +50,13 @@ export class SharedService {
       this.alert_simple('Error', JSON.stringify(error))
     }
   }
+
+  capture = async() => {
+    let options: VideoCapturePlusOptions = { 
+        limit: 1, duration: 30 
+    };
+    
+    this.videoCapturePlus.captureVideo(options).then((mediafile: MediaFile[]) => console.log(mediafile), error => console.log('Something went wrong'));
+  }
+
 }

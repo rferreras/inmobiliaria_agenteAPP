@@ -9,6 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons'; //Solid icons
 import { AuthInterceptor } from './interceptors/authInterceptor';
+import { Camera } from '@ionic-native/camera/ngx';
+import { VideoCapturePlus } from '@ionic-native/video-capture-plus/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,7 +31,9 @@ import { AuthInterceptor } from './interceptors/authInterceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }
+    },
+    Camera,
+    VideoCapturePlus
   ],
   bootstrap: [AppComponent],
 })
