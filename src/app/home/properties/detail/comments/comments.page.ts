@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PropertiesService } from '../../../../services/properties.service';
 
 @Component({
   selector: 'app-comments',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CommentsPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _propService: PropertiesService
+  ) { }
 
   ngOnInit() {
   }

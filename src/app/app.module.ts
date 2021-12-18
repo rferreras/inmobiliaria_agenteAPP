@@ -11,6 +11,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons'; //Solid icons
 import { AuthInterceptor } from './interceptors/authInterceptor';
 import { Camera } from '@ionic-native/camera/ngx';
 import { VideoCapturePlus } from '@ionic-native/video-capture-plus/ngx';
+import { PhotoViewer } from '@awesome-cordova-plugins/photo-viewer/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -33,7 +34,8 @@ import { VideoCapturePlus } from '@ionic-native/video-capture-plus/ngx';
       multi: true
     },
     Camera,
-    VideoCapturePlus
+    VideoCapturePlus,
+    PhotoViewer
   ],
   bootstrap: [AppComponent],
 })

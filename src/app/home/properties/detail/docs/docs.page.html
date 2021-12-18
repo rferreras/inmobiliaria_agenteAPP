@@ -1,3 +1,18 @@
-<ion-content CLASS="ion-padding">
-  <h1>DOCUMENTOS DE LA PROPIEDAD</h1>
+<ion-content class="ion-padding">  
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addDocumento()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-list>
+    <ion-list-header>
+      <ion-label>Documentos de la propiedad</ion-label>
+    </ion-list-header>
+
+    <ion-item *ngFor="let documento of _propService.property.documentos" (click)="verDocumento(documento.url)" detail>
+      <ion-label>{{documento.nombre}}</ion-label>      
+    </ion-item>
+  </ion-list>
+  
 </ion-content>

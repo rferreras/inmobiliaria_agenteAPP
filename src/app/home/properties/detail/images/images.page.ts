@@ -21,6 +21,7 @@ export class ImagesPage implements OnInit {
 
   addImage = async() => {
     const image = await this._shareService.takePicture()
+    
     const data_img = {
       property_id: this._propService.property.id,
       image: image

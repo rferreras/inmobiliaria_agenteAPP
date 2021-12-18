@@ -16,6 +16,7 @@ export interface Propertie{
     operacion: string
     valor: number
     fecha_reg: string
+    documentos: Documentos[]
 }
 
 export interface Images{
@@ -35,4 +36,18 @@ export interface Estados{
 export interface TipoOperacion{
     id: number
     tipo: string
+}
+
+export interface Documentos{
+    id: number
+    nombre: string
+    url: string
+}
+
+export interface Comentarios{
+    id: number
+    comentario: string
+    fecha: string
+    hora: string
+    usuario: string
 }
