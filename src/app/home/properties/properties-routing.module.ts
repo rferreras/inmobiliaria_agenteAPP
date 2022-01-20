@@ -6,6 +6,7 @@ import { PropertieResolverService } from '../../resolvers/propertie-resolver';
 import { StateResolverService } from '../../resolvers/states-resolver';
 import { PropertyOpsResolverService } from '../../resolvers/propertie-ops-resolver';
 import { PropertyTypeResolverService } from '../../resolvers/propertie-type-resolver';
+import { AreasResolverService } from '../../resolvers/areas-resolver';
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
       states: StateResolverService,
       operation_types: PropertyOpsResolverService,
       types: PropertyTypeResolverService,
+      areas: AreasResolverService
     }
   }
 ];

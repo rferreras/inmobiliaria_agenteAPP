@@ -32,6 +32,17 @@
       <ion-row>
         <ion-col>
           <ion-item>
+            <ion-label position="stacked">Area de ubicación <span class="required">(*)</span></ion-label>
+            <ion-select placeholder="Area de ubicación" formControlName="area_id">
+            <ion-select-option *ngFor="let area of areas" [value]="area.id">{{area.area}}</ion-select-option>  
+            </ion-select>
+          </ion-item>
+        </ion-col>  
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
             <ion-label position="stacked">Calle <span class="required">(*)</span></ion-label>
             <ion-input formControlName="calle"></ion-input>
           </ion-item>

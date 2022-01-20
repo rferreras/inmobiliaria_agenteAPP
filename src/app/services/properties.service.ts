@@ -23,6 +23,7 @@ export class PropertiesService {
       descripcion: '',
       precio_desde: '',
       precio_hasta: '',
+      area_id: ''
   }
 
   constructor(
@@ -34,7 +35,8 @@ export class PropertiesService {
   getPropertiesTypes = (): Observable<TipoOperacion[]> => this.http.get<TipoOperacion[]>(`${environment.api}/properties/getPropiedadesTipos`)
   getEstados = (): Observable<Estados[]> => this.http.get<Estados[]>(`${environment.api}/properties/getEstados`)
   getTiposOperacion = (): Observable<TipoOperacion[]> => this.http.get<TipoOperacion[]>(`${environment.api}/properties/getTiposOperacion`)
-  
+  getAreas = (): Observable<any[]> => this.http.get<any[]>(`${environment.api}/properties/getAreas`)
+
   guardarPropiedad = (data: any) => {
     return new Promise((resolve, reject) => {
       this.http.post(`${environment.api}/properties/guardarPropiedad`, data)

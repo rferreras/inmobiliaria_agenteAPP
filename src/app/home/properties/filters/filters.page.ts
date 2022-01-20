@@ -15,6 +15,7 @@ export class FiltersPage implements OnInit {
   public propertiesTypes: PropertyType[] = []
   public estados: Estados[] = []
   public tipoOperacion: TipoOperacion[] = []
+  public areas: any[] = []
 
   constructor(
     private formbuilder: FormBuilder,
@@ -31,10 +32,12 @@ export class FiltersPage implements OnInit {
       this.estados = response.states
       this.propertiesTypes = response.types
       this.tipoOperacion = response.operation_types
+      this.areas = response.areas
 
       this.estados.unshift({id: 0, estado: '-- Todos --'})
       this.propertiesTypes.unshift({id: 0, tipo: '-- Todos --'})
       this.tipoOperacion.unshift({id: 0, tipo: '-- Todos --'})
+      this.areas.unshift({id: 0, area: '-- Todas las areas --'})
 
       this.createForm()
     });
@@ -55,6 +58,7 @@ export class FiltersPage implements OnInit {
       descripcion: this._propService.filters.descripcion,
       precio_desde: this._propService.filters.precio_desde,
       precio_hasta: this._propService.filters.precio_hasta,
+      area_id: this._propService.filters.area_id,
     })
   }
 
