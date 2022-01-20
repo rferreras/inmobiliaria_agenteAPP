@@ -3,6 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { PropertiesPage } from './properties.page';
 import { PropertieResolverService } from '../../resolvers/propertie-resolver';
+import { StateResolverService } from '../../resolvers/states-resolver';
+import { PropertyOpsResolverService } from '../../resolvers/propertie-ops-resolver';
+import { PropertyTypeResolverService } from '../../resolvers/propertie-type-resolver';
 
 const routes: Routes = [
   {
@@ -13,6 +16,15 @@ const routes: Routes = [
     path: 'detail/:id',
     loadChildren: () => import('./detail/detail.module').then( m => m.DetailPageModule),
     resolve: { propertie: PropertieResolverService }
+  },
+  {
+    path: 'filters',
+    loadChildren: () => import('./filters/filters.module').then( m => m.FiltersPageModule),
+    resolve: {
+      states: StateResolverService,
+      operation_types: PropertyOpsResolverService,
+      types: PropertyTypeResolverService,
+    }
   }
 ];
 

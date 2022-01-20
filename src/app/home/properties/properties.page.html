@@ -9,5 +9,49 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button expand="block" fill="outline" (click)="viewFilters()">
+          <ion-badge class="ion-margin-end" color="primary">{{filter_count}}</ion-badge>
+          Filtros de busqueda
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <ion-list>
+    <ion-item *ngFor="let propiedad of propiedades; let i = index" (click)="viewProperty(i)">
+      <ion-thumbnail slot="start">
+        <img [src]="propiedad.imagen || upload+'nophoto.png'">
+        <ion-badge  [color]="getBadge(propiedad.operacion)">
+          {{ propiedad.operacion }}
+        </ion-badge>  
+      </ion-thumbnail>
+      <ion-label class="ion-text-wrap">
+        <ion-text color="primary">
+          <h3>{{ propiedad.calle }} {{ propiedad.numero_exterior }} {{ propiedad.numero_interior }}</h3>
+        </ion-text>
+        <p>Col. {{ propiedad.colonia }}</p>
+        <p>{{ propiedad.ciudad }}, {{ propiedad.estado }}</p>
+        
+        <ion-chip outline color="success">
+          <ion-icon name="pin"></ion-icon>
+          <ion-label>{{ propiedad.area }}</ion-label>          
+        </ion-chip>        
+        <br>
+        <ion-chip outline color="primary">
+          <ion-label>{{ propiedad.tipo_propiedad }}</ion-label>
+        </ion-chip>  
+        <br>
+               
+        
+      </ion-label>
+      
+      <ion-text slot="end">
+        <p>{{ propiedad.valor | currency }}</p>
+      </ion-text>
+      
+    </ion-item>
+  </ion-list>
 </ion-content>

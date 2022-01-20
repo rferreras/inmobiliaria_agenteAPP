@@ -32,8 +32,7 @@ export class SellersPage implements OnInit {
     loading.dismiss()
   }
 
-  goToSeller = (sellerId) => {
-    console.log(sellerId)
+  goToSeller = (sellerId) => {    
     this.router.navigate(['info', sellerId], { relativeTo: this.activatedRoute})
   }
 

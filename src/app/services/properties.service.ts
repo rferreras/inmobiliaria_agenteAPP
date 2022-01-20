@@ -10,12 +10,27 @@ import { map } from 'rxjs/operators';
 })
 export class PropertiesService {
   public property: Propertie
+  public filters = {
+      calle : '',
+      numero_exterior : '',
+      numero_interior : '',
+      colonia : '',
+      ciudad : '',
+      estado : '',
+      cp : '',
+      tipo_negocio : '',
+      tipo_construccion : '',
+      descripcion: '',
+      precio_desde: '',
+      precio_hasta: '',
+  }
 
   constructor(
     private http: HttpClient
   ) { }
 
   getProperties = (propertieId: number) => this.http.get(`${environment.api}/properties/getPropiedad/${propertieId}`)
+  getPropertiesSearch = (params: any) => this.http.get(`${environment.api}/properties/getPropiedades`, { params: params })
   getPropertiesTypes = (): Observable<TipoOperacion[]> => this.http.get<TipoOperacion[]>(`${environment.api}/properties/getPropiedadesTipos`)
   getEstados = (): Observable<Estados[]> => this.http.get<Estados[]>(`${environment.api}/properties/getEstados`)
   getTiposOperacion = (): Observable<TipoOperacion[]> => this.http.get<TipoOperacion[]>(`${environment.api}/properties/getTiposOperacion`)

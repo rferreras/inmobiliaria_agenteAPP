@@ -36,8 +36,7 @@ export class PropertyPage implements OnInit {
       this.propertiesTypes = response.types
       this.tipoOperacion = response.operation_types
       this.property = response.propertie.data
-      
-      console.log(this.property)
+                 
       this.createForm()
     });
   }
