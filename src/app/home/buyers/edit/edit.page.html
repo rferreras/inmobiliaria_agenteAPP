@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [text]="'Atras'">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="id == '0'">Nuevo comprador</ion-title>
+    <ion-title *ngIf="id != '0'">Comprador Nombre</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+
+    <form [formGroup]="formulario">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Nombre del contacto <span class="required">(*)</span></ion-label>
+            <ion-input type="text" formControlName="nombre"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Apellidos del contacto</ion-label>
+            <ion-input type="text" formControlName="apellidos"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Correo eléctronico <span class="required">(*)</span></ion-label>
+            <ion-input type="text" formControlName="correo"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Télefono de contacto</ion-label>
+            <ion-input type="text" formControlName="telefono"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Télefono de celular</ion-label>
+            <ion-input type="text" formControlName="celular"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Comentarios del comprador</ion-label>
+            <ion-textarea rows="6" type="text" formControlName="comentarios"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" (click)="guardarContacto()">Guardar Contacto</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>    
+
+  </ion-grid>
+</ion-content>

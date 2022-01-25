@@ -9,5 +9,51 @@
 </ion-header>
 
 <ion-content>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addSeller()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>             
+          <ion-card-content>
+              <p>Area de Filtros</p>           
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <div *ngIf="loading">
+            <ion-item *ngFor="let row of [1,2,3,4,5,6]">
+              <ion-label class="ion-text-wrap">
+                <ion-text color="primary">
+                  <h3><ion-skeleton-text animated style="width: 40%"></ion-skeleton-text></h3>
+                </ion-text>                     
+                <p><ion-skeleton-text animated style="width: 80%"></ion-skeleton-text></p>
+              </ion-label>            
+            </ion-item>
+          </div>
+
+          <div *ngIf="!loading">
+            <ion-item *ngFor="let buyer of buyers" detail (click)="goToBuyer(buyer.id)">
+              <ion-label class="ion-text-wrap">
+                <ion-text color="primary">
+                  <h3>{{ buyer.nombre}} {{ buyer.apellidos }}</h3>
+                </ion-text>                     
+                <p>Registro: {{ buyer.fecha_alta }}</p>
+              </ion-label>              
+            </ion-item>
+          </div>
+
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
 </ion-content>

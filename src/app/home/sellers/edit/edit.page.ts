@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRouteSnapshot, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -35,6 +35,10 @@ export class EditPage implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  guardarContacto = () => {
+    console.log(this.formulario.value)
   }
 
 }
